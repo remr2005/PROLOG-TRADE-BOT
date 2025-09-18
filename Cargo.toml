@@ -1,0 +1,16 @@
+[package]
+name = "my_project"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = [] # デフォルトではPython関連の機能を無効化
+python = ["dep:pyo3"] # `python` フィーチャーが有効な時のみ `pyo3` を使う
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "my_project"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+pyo3 = { version = "0.23.3", features = ["extension-module"], optional = true }
